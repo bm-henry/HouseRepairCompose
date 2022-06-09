@@ -12,7 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.brickmate.houserepairingcompose.ui.theme.HouseRepairingComposeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,5 +33,7 @@ fun Greeting(name: String) {
 fun DefaultPreview() {
     HouseRepairingComposeTheme {
         Greeting("Android")
+
+
     }
 }

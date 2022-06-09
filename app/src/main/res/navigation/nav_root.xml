@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.brickmate.houserepairingcompose.fragment.splash.LoginFragment"
+        android:name="com.brickmate.houserepairingcompose.fragment.Login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 </navigation>

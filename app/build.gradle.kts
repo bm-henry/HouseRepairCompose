@@ -1,6 +1,10 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id(Dependencies.BuildPlugin.androidApplication)
+    id(Dependencies.BuildPlugin.kotlin)
+    id(Dependencies.Libraries.hiltPlugin)
+
+    kotlin("kapt")
+
 }
 
 android {
@@ -16,16 +20,52 @@ android {
             useSupportLibrary = true
         }
     }
+//    signingConfigs {
+//        create("config") {
+//            storeFile = file("../app/obelab-keystore.jks")
+//            storePassword = "Obelab2)@2"
+//            keyPassword = "Obelab2)@2"
+//            keyAlias = "obelab-alias"
+//        }
+//    }
+
 
     buildTypes {
-        release {
+        getByName(Config.BuildType.DEBUG) {
             isMinifyEnabled = false
+            isDebuggable = true
+        //    signingConfig = signingConfigs["config"]
+          //  buildConfigField("boolean",Config.Default.ENABLE_CRASH, "false")
+        }
+        getByName(Config.BuildType.RELEASE) {
+            isMinifyEnabled = false
+            isDebuggable = false
+            isShrinkResources = false
+      //      buildConfigField("boolean", Default.ENABLE_CRASH, "true")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        //    signingConfig = signingConfigs["config"]
         }
     }
+    flavorDimensions.add(Config.FlavorDimensions.DEFAULT)
+
+
+    productFlavors{
+        create(Config.ProductFlavors.DEV){
+            dimension = Config.FlavorDimensions.DEFAULT
+            applicationIdSuffix = ".${Config.ProductFlavors.DEV}"
+            versionNameSuffix = "-${Config.ProductFlavors.DEV}"
+            buildConfigField("String", Config.Default.BASE_URL, "\"${Config.Default.BASE_URL_DEV}\"")
+        }
+        create(Config.ProductFlavors.PUBLIC) {
+            dimension = Config.FlavorDimensions.DEFAULT
+            buildConfigField("String", Config.Default.BASE_URL, "\"${Config.Default.BASE_URL_PROD}\"")
+        }
+
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -63,11 +103,24 @@ dependencies {
 
     implementation(Dependencies.Libraries.composeUITest)
     implementation(Dependencies.Libraries.composeTestManifest)
-    implementation(Dependencies.Libraries.constraintlayout)
     implementation(Dependencies.Libraries.constraintlayoutCompose)
     implementation(Dependencies.Libraries.navigationUI)
     implementation(Dependencies.Libraries.navigationFragment)
     implementation(Dependencies.Libraries.navigationCompose)
+    implementation(Dependencies.Libraries.retrofit)
+    implementation(Dependencies.Libraries.retrofitConverter)
+    implementation(Dependencies.Libraries.gSon)
+    implementation(Dependencies.Libraries.viewModel)
+    implementation(Dependencies.Libraries.viewModelCompose)
+    implementation(Dependencies.Libraries.liveData)
+    implementation(Dependencies.Libraries.viewModelState)
+    implementation(Dependencies.Libraries.okhttp3)
+    implementation(Dependencies.Libraries.okhttp3Logging)
+
+    // hilt
+    kapt (Dependencies.Libraries.hiltComplier)
+    kapt (Dependencies.Libraries.lifeCycleProcessor)
+    implementation (Dependencies.Libraries.hilt)
 
 
     //test
@@ -76,33 +129,9 @@ dependencies {
     androidTestImplementation(Dependencies.Libraries.espresso)
     androidTestImplementation(Dependencies.Libraries.composeTest)
 
-
+}
+kapt {
+    correctErrorTypes = true
 }
 
-private object BuildType {
-    const val DEBUG = "debug"
-    const val RELEASE = "release"
-}
-
-private object ProductFlavors {
-    const val DEV = "dev"
-    const val INTERNAL = "internal"
-    const val PUBLIC = "public"
-}
-
-
-private object FlavorDimensions {
-    const val DEFAULT = "default"
-}
-
-private object Default {
-    const val buildType = BuildType.DEBUG
-    const val buildFlavor = ProductFlavors.DEV
-    const val ENABLE_CRASH = "ENABLE_CRASH"
-    const val BASE_URL = "BASE_URL"
-    const val BASE_URL_DEV = "https://api-houserp.brickmate.kr/api/"
-    const val BASE_URL_PROD = "https://api-houserp.brickmate.kr/api/"
-    val BUILD_VARIANT = "${buildFlavor.capitalize()}${buildType.capitalize()}"
-
-}
 
