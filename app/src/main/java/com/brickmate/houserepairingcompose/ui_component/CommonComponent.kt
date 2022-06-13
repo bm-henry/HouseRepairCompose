@@ -1,26 +1,25 @@
 package com.brickmate.houserepairingcompose.ui_component
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.brickmate.houserepairingcompose.ui.theme.AppTextStyle.bold16
-import com.brickmate.houserepairingcompose.ui.theme.AppTextStyle.bold20
-import com.brickmate.houserepairingcompose.ui.theme.Black
-import com.brickmate.houserepairingcompose.ui.theme.Green200
-import com.brickmate.houserepairingcompose.ui.theme.GreenMain
+import com.brickmate.houserepairingcompose.screen.theme.AppTextStyle.bold16
+import com.brickmate.houserepairingcompose.screen.theme.AppTextStyle.bold20
+import com.brickmate.houserepairingcompose.screen.theme.AppTextStyle.medium12
+import com.brickmate.houserepairingcompose.screen.theme.Black
+import com.brickmate.houserepairingcompose.screen.theme.GreenMain
 
 @Composable
 fun AppOutLineTextView(
@@ -51,7 +50,6 @@ fun AppOutLineTextView(
                 focusedLabelColor = Black,
                 unfocusedLabelColor = Color.LightGray,
 
-
                 ),
             label = { Text(placeHolder, style = bold16) },
             singleLine = true,
@@ -80,4 +78,47 @@ fun ContainButton(
     ) {
         Text(text = text, style = bold20, color = Color.White)
     }
+}
+
+@Composable
+fun LoadingDialog() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        CircularProgressIndicator()
+    }
+}
+
+@Composable
+fun ErrorDialog(message: String) {
+    var openDialog by remember { mutableStateOf(true) }
+    if (openDialog) {
+        AlertDialog(
+            onDismissRequest = { },
+            modifier = Modifier
+                .padding(28.dp)
+                .fillMaxWidth()
+                .wrapContentHeight(),
+            title = {
+                Text(text = "SomeThing went wrong", style = bold16)
+
+            },
+            text = {
+               Text(text = message, style = medium12)
+            }, confirmButton = {
+                TextButton(onClick = {
+                    openDialog = false
+                }) {
+                    Text(text = "Confirm", color = GreenMain)
+                }
+            })
+    }
+}
+
+@Preview
+@Composable
+fun preViewErrorDialog() {
+    ErrorDialog(message = "Helloo")
 }

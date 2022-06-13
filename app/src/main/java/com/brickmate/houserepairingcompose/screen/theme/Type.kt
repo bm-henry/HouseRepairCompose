@@ -1,4 +1,4 @@
-package com.brickmate.houserepairingcompose.ui.theme
+package com.brickmate.houserepairingcompose.screen.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

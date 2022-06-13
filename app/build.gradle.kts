@@ -2,8 +2,8 @@ plugins {
     id(Dependencies.BuildPlugin.androidApplication)
     id(Dependencies.BuildPlugin.kotlin)
     id(Dependencies.Libraries.hiltPlugin)
-
     kotlin("kapt")
+
 
 }
 
