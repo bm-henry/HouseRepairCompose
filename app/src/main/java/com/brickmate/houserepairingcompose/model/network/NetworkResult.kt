@@ -3,8 +3,8 @@ package com.brickmate.houserepairingcompose.model.network
 import com.brickmate.houserepairingcompose.model.login.LoginResponse
 
 sealed class NetworkResult<T>(
-    val data: BaseApiResponse<T>? = null,
-    val error: ErrorApiResponse? = null,
+    val dataResponse: BaseApiResponse<T>? = null,
+    val errorApiResponse: ErrorApiResponse? = null,
 ) {
     class Success<T>(response: BaseApiResponse<T>?) : NetworkResult<T>(response)
 

@@ -27,7 +27,6 @@ class NetworkModule {
         okHttpClientBuilder.addInterceptor { chain ->
             chain.proceed(
                 chain.request().newBuilder()
-
                     .addHeader("Accept", "application/json")
                     .build()
             )

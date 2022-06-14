@@ -92,24 +92,26 @@ fun LoadingDialog() {
 }
 
 @Composable
-fun ErrorDialog(message: String) {
+fun ErrorDialog(message: String, onConfirmClick : ()->Unit) {
     var openDialog by remember { mutableStateOf(true) }
     if (openDialog) {
         AlertDialog(
-            onDismissRequest = { },
+            onDismissRequest = {
+              
+            },
             modifier = Modifier
                 .padding(28.dp)
                 .fillMaxWidth()
                 .wrapContentHeight(),
             title = {
                 Text(text = "SomeThing went wrong", style = bold16)
-
             },
             text = {
-               Text(text = message, style = medium12)
+                Text(text = message, style = medium12)
             }, confirmButton = {
                 TextButton(onClick = {
-                    openDialog = false
+
+                    onConfirmClick.invoke()
                 }) {
                     Text(text = "Confirm", color = GreenMain)
                 }
@@ -120,5 +122,5 @@ fun ErrorDialog(message: String) {
 @Preview
 @Composable
 fun preViewErrorDialog() {
-    ErrorDialog(message = "Helloo")
+    ErrorDialog(message = "Helloo",{})
 }

@@ -1,30 +1,22 @@
 package com.brickmate.houserepairingcompose.fragment.Login
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.runtime.*
-
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brickmate.houserepairingcompose.R
 import com.brickmate.houserepairingcompose.base.BaseFragment
-import com.brickmate.houserepairingcompose.base.BaseViewModel
 import com.brickmate.houserepairingcompose.model.login.LoginNormalRequest
-import com.brickmate.houserepairingcompose.model.network.NetworkResult
 import com.brickmate.houserepairingcompose.screen.theme.Green200
 import com.brickmate.houserepairingcompose.screen.theme.HouseRepairingComposeTheme
 import com.brickmate.houserepairingcompose.ui_component.AppOutLineTextView
@@ -44,15 +36,20 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     @Composable
     override fun ComposableView() {
-        HouseRepairingComposeTheme{
-             LoginBody(onLoginClick = { userName, password ->
-                 viewModel.login(
-                     LoginNormalRequest(
-                         username = userName, password = password
-                     )
-                 )
-             })
-         }
+        HouseRepairingComposeTheme {
+            super.HandleInternetResponse()
+            LoginBody(onLoginClick = { userName, password ->
+                viewModel.login(
+                    LoginNormalRequest(
+                        username = userName, password = password
+                    )
+                )
+
+            })
+            viewModel.loginResponse.value?.let {
+
+            }
+        }
 
     }
 }
@@ -66,36 +63,21 @@ fun PreviewLogin() {
 @Composable
 fun LoginBody(
     onLoginClick: (userName: String, password: String) -> Unit,
-    viewModel: LoginViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: LoginViewModel = viewModel()
 ) {
     val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
     HouseRepairingComposeTheme() {
         Box {
             Column(modifier = Modifier.fillMaxSize()) {
                 LoginForm(onLoginClick = onLoginClick)
             }
-            when (viewModel._loginResponseState.collectAsState().value) {
-                is NetworkResult.Loading -> {
-                    LoadingDialog()
-                }
-                is NetworkResult.Success -> {
-                    Toast.makeText(context, "LoginSuccess", Toast.LENGTH_SHORT).show()
-                }
-                is NetworkResult.Error -> {
-                    val errorMessage =
-                        viewModel._loginResponseState.collectAsState().value.error?.message
-                    errorMessage?.let {
-                        ErrorDialog(it)
-                    }
-                }
-
-            }
 
         }
-
     }
-
 }
+
+
 
 @Composable
 fun LoginForm(

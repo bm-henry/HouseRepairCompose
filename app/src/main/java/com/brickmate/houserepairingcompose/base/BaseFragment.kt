@@ -8,6 +8,10 @@ import androidx.annotation.LayoutRes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import com.brickmate.houserepairingcompose.model.network.NetworkResult
+import com.brickmate.houserepairingcompose.ui_component.ErrorDialog
+import com.brickmate.houserepairingcompose.ui_component.LoadingDialog
+import kotlinx.coroutines.flow.MutableStateFlow
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     @LayoutRes
@@ -28,8 +32,28 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     }
 
 
+
     @Composable
-    abstract fun ComposableView()
+    open fun ComposableView() {
+        HandleInternetResponse()
+    }
 
     fun isFragmentLive() = isAdded && view != null
+
+    @Composable
+    fun HandleInternetResponse() {
+        with(viewModel) {
+            isLoadingDialog.value.let {
+                if(it) LoadingDialog()
+            }
+            onErrorApiCall.value.let { errorResponse ->
+                errorResponse?.message?.let {
+                    ErrorDialog(message = it, onConfirmClick = {
+                        viewModel.cancelErrorDialog()
+                    })
+                }
+            }
+        }
+
+    }
 }
