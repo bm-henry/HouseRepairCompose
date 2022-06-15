@@ -8,6 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.brickmate.houserepairingcompose.model.network.NetworkResult
 import com.brickmate.houserepairingcompose.ui_component.ErrorDialog
 import com.brickmate.houserepairingcompose.ui_component.LoadingDialog
@@ -18,6 +20,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     abstract fun getLayoutId(): Int
     abstract fun composeLayoutID(): Int
     protected abstract val viewModel: VM
+    var navController : NavController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,10 +28,13 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(getLayoutId(), container, false)
+        navController = findNavController()
         view.findViewById<ComposeView>(composeLayoutID()).setContent {
             ComposableView()
         }
+
         return  view
+
     }
 
 

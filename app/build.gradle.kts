@@ -2,6 +2,8 @@ plugins {
     id(Dependencies.BuildPlugin.androidApplication)
     id(Dependencies.BuildPlugin.kotlin)
     id(Dependencies.Libraries.hiltPlugin)
+    id(Dependencies.Libraries.safeArgs)
+
     kotlin("kapt")
 
 

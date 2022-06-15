@@ -51,6 +51,8 @@ object Dependencies {
         const val navigationUI ="androidx.navigation:navigation-fragment:${Version.navVersion}"
         const val navigationCompose ="androidx.navigation:navigation-fragment:${Version.navVersion}"
         const val hiltPlugin  = "dagger.hilt.android.plugin"
+        const val safeArgs  = "androidx.navigation.safeargs"
+        const val safeArgsKotlin  = "androidx.navigation.safeargs.kotlin"
         const val hilt = "com.google.dagger:hilt-android:${Version.hiltVersion}"
         const val hiltComplier = "com.google.dagger:hilt-android-compiler:${Version.hiltVersion}"
 

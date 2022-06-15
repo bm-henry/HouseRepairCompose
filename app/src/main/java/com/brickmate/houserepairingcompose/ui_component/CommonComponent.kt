@@ -2,13 +2,13 @@ package com.brickmate.houserepairingcompose.ui_component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -29,18 +29,18 @@ fun AppOutLineTextView(
     outlineColor: Color = Color.Black,
     isShowTrailingIcon: Boolean = false,
     onTextChange: (String) -> Unit,
-    keyboardType: KeyboardType = KeyboardType.Text
+    keyboardType: KeyboardType = KeyboardType.Text,
+    isError: Boolean = false
 ) {
     val isShowPassword by rememberSaveable { mutableStateOf(keyboardType != KeyboardType.Password) }
-    val customTextSelectionColors = TextSelectionColors(
-        handleColor = GreenMain,
-        backgroundColor = GreenMain.copy(alpha = 0.4f)
-    )
-    CompositionLocalProvider(LocalTextSelectionColors provides customTextSelectionColors) {
+    val focusRequester = remember { FocusRequester() }
+    Column() {
         OutlinedTextField(
-            modifier = modifier,
+            modifier = modifier.focusRequester(focusRequester),
             value = text,
-            onValueChange = onTextChange,
+            onValueChange = {
+                onTextChange.invoke(it)
+            },
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             visualTransformation = if (keyboardType == KeyboardType.Password && !isShowPassword) PasswordVisualTransformation() else VisualTransformation.None,
             colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -51,15 +51,21 @@ fun AppOutLineTextView(
                 unfocusedLabelColor = Color.LightGray,
 
                 ),
+            isError = isError,
             label = { Text(placeHolder, style = bold16) },
             singleLine = true,
-            textStyle = bold16
-
+            textStyle = bold16,
         )
+        if (isError) {
+            LaunchedEffect(Unit) {
+                focusRequester.requestFocus()
+            }
+        }
+
     }
 
-
 }
+
 
 @Composable
 fun ContainButton(
@@ -92,12 +98,12 @@ fun LoadingDialog() {
 }
 
 @Composable
-fun ErrorDialog(message: String, onConfirmClick : ()->Unit) {
+fun ErrorDialog(message: String, onConfirmClick: () -> Unit) {
     var openDialog by remember { mutableStateOf(true) }
     if (openDialog) {
         AlertDialog(
             onDismissRequest = {
-              
+
             },
             modifier = Modifier
                 .padding(28.dp)
@@ -122,5 +128,5 @@ fun ErrorDialog(message: String, onConfirmClick : ()->Unit) {
 @Preview
 @Composable
 fun preViewErrorDialog() {
-    ErrorDialog(message = "Helloo",{})
+    ErrorDialog(message = "Helloo", {})
 }
