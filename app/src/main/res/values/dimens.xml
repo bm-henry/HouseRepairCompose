@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_stroke_input_normal">1dp</dimen>
+    <dimen name="width_stroke_input_focus">1.75dp</dimen>
+    <dimen name="width_stroke_button">1.25dp</dimen>
+    <dimen name="width_divider_8">8dp</dimen>
+    <dimen name="width_divider_1_5">1.5dp</dimen>
+    <dimen name="width_divider_1">1dp</dimen>
+    <dimen name="width_divider_0_5">0.5dp</dimen>
+
+    <dimen name="width_ic_rectangle_vertical">36dp</dimen>
+    <dimen name="width_ic_rectangle_horizontal">52dp</dimen>
+
+    <dimen name="height_ic_rectangle_vertical">52dp</dimen>
+    <dimen name="height_ic_rectangle_horizontal">36dp</dimen>
+    <dimen name="height_ic_rectangle_horizontal_28">28dp</dimen>
+    <dimen name="height_button_from_text">36dp</dimen>
+    <dimen name="height_button">50dp</dimen>
+    <dimen name="height_button_x2">100dp</dimen>
+    <dimen name="height_toolbar">50dp</dimen>
+
+
+    <dimen name="radius_ic_square">4dp</dimen>
+    <dimen name="radius_ic_rectangle">4dp</dimen>
+    <dimen name="radius_box_dialog">12dp</dimen>
+    <dimen name="radius_button">50dp</dimen>
+
+    <dimen name="edge_ic_square">35dp</dimen>
+
+    <dimen name="diameter_ic_circle">52dp</dimen>
+
+
+    <dimen name="text_size_10">10dp</dimen>
+    <dimen name="text_size_8">8dp</dimen>
+    <dimen name="text_size_12">12dp</dimen>
+    <dimen name="text_size_14">14dp</dimen>
+    <dimen name="text_size_16">16dp</dimen>
+    <dimen name="text_size_18">18dp</dimen>
+    <dimen name="text_size_20">20dp</dimen>
+    <dimen name="text_size_22">22dp</dimen>
+    <dimen name="text_size_24">24dp</dimen>
+
+    <dimen name="margin_icon_start">12dp</dimen>
+    <dimen name="margin_icon_end">12dp</dimen>
+    <dimen name="banner_heigh">225dp</dimen>
+    <dimen name="height_tag">48dp</dimen>
+    <dimen name="image_customer_height">350dp</dimen>
+    <dimen name="image_avatar_height_86">86dp</dimen>
+    <dimen name="image_avatar_height_60">60dp</dimen>
+    <dimen name="image_avatar_height_100">100dp</dimen>
+
+    <dimen name="long_0dp">0dp</dimen>
+    <dimen name="long_1dp">1dp</dimen>
+    <dimen name="long_2dp">2dp</dimen>
+    <dimen name="long_3dp">3dp</dimen>
+    <dimen name="long_4dp">4dp</dimen>
+    <dimen name="long_5dp">5dp</dimen>
+    <dimen name="long_6dp">6dp</dimen>
+    <dimen name="long_8dp">8dp</dimen>
+    <dimen name="long_10dp">10dp</dimen>
+    <dimen name="long_12dp">12dp</dimen>
+    <dimen name="long_15dp">15dp</dimen>
+    <dimen name="long_16dp">16dp</dimen>
+    <dimen name="long_17dp">17dp</dimen>
+    <dimen name="long_20dp">20dp</dimen>
+    <dimen name="long_24dp">24dp</dimen>
+    <dimen name="long_25dp">25dp</dimen>
+    <dimen name="long_30dp">30dp</dimen>
+    <dimen name="long_32dp">32dp</dimen>
+    <dimen name="long_34dp">34dp</dimen>
+    <dimen name="long_42dp">42dp</dimen>
+    <dimen name="long_45dp">45dp</dimen>
+    <dimen name="long_40dp">40dp</dimen>
+    <dimen name="long_50dp">50dp</dimen>
+    <dimen name="long_64dp">64dp</dimen>
+    <dimen name="long_80dp">80dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="background_height">200dp</dimen>
+    <dimen name="navigation_drawer_width">260dp</dimen>
+    <dimen name="long_125dp">125dp</dimen>
+    <dimen name="banner_height">350</dimen>
+    <dimen name="container">8dp</dimen>
+    <dimen name="width_of_image_label">22dp</dimen>
+    <dimen name="margin_label_title">16dp</dimen>
+</resources>
