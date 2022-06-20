@@ -77,6 +77,7 @@ android {
     }
     buildFeatures {
         compose = true
+        dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.Libraries.Version.composeVersion
@@ -118,6 +119,8 @@ dependencies {
     implementation(Dependencies.Libraries.viewModelState)
     implementation(Dependencies.Libraries.okhttp3)
     implementation(Dependencies.Libraries.okhttp3Logging)
+    implementation(Dependencies.Libraries.viewPager2)
+    implementation(Dependencies.Libraries.googelMaterial)
 
     // hilt
     kapt (Dependencies.Libraries.hiltComplier)

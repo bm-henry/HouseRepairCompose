@@ -1,17 +1,12 @@
-package com.brickmate.houserepairingcompose.fragment.Login
+package com.brickmate.houserepairingcompose.fragment.login
 
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.viewModelScope
 import com.brickmate.houserepairingcompose.api_service.login.LoginRepository
 import com.brickmate.houserepairingcompose.base.BaseViewModel
 import com.brickmate.houserepairingcompose.model.login.LoginNormalRequest
 import com.brickmate.houserepairingcompose.model.login.LoginResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 

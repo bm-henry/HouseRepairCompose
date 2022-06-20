@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.brickmate.houserepairingcompose.model.NavigationItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        android:id="@+id/constrain_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/card_item"
+            android:layout_margin="@dimen/long_2dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/long_50dp"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/navigation_icon"
+                    android:layout_width="35sp"
+                    android:layout_height="35sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/long_12dp"
+                    android:scaleType="centerInside"
+                    android:src="@android:drawable/btn_star_big_on"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/navigation_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/long_20dp"
+                    android:gravity="center_vertical"
+                    android:text="Custom Navigation Drawer Row"
+                    android:textColor="@color/text_gray_title"
+                    android:theme="@style/ThemeText16Medium" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/separatorTop"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_marginStart="@dimen/long_12dp"
+            android:layout_marginTop="@dimen/long_1dp"
+            android:layout_marginEnd="@dimen/long_12dp"
+            android:background="@color/cyan_100_percent"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_item" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

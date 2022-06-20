@@ -3,4 +3,47 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="problem_occurred">A problem occurred</string>
+    <string name="home">수리내역</string>
+    <string name="shopping">쇼핑몰연결</string>
+    <string name="watch_video">동영상강의</string>
+    <string name="support">고객센터</string>
+    <string name="term_service">계정/약관</string>
+    <string name="notice">공지사항</string>
+    <string name="info_employee">EMPLOYEE</string>
+    <string name="info_manager">MANAGER</string>
+
+    <!-- type of all task -->
+    <string name="common_type_request_cancel">관리자취소</string>
+    <string name="common_type_request_pending">대기</string>
+    <string name="common_type_request_assigning">배정중</string>
+    <string name="common_type_request_assigned">배정완료</string>
+    <string name="common_type_request_wait_assigning">배정중</string>
+    <string name="common_type_request_re_assigning">배정중</string>
+    <string name="common_type_request_re_assigned">배정완료</string>
+    <string name="common_type_request_visit">방문</string>
+    <string name="common_type_request_estimate">견적전송</string>
+    <string name="common_type_request_estimate_extra">추가견적</string>
+    <string name="common_type_request_payment">결제완료</string>
+    <string name="common_type_request_payment_extra">추가결제</string>
+    <string name="common_type_request_work">작업중</string>
+    <string name="common_type_request_work_complete">작업완료</string>
+    <string name="common_type_request_user_cancel">고객취소</string>
+    <string name="common_type_request_engineer_cancel">기사취소</string>
+    <string name="common_type_request_checked">리포트확인</string>
+    <string name="common_type_request_unknown">확인불가</string>
+    <string name="common_type_request_user_change_date">시간변경</string>
+    <string name="common_type_request_work_complete_extra" >작업완료</string>
+
+
+    <string name="status_assigning">배정중</string>
+    <string name="status_payment">결제</string>
+    <string name="status_payment_extra">추가 결제</string>
+    <string name="status_assigned">배정 완료</string>
+    <string name="status_visit">방문</string>
+    <string name="status_estimate">견적서</string>
+    <string name="status_estimate_extra">추가견적</string>
+    <string name="status_working">작업중</string>
+    <string name="status_cancel">취소</string>
+    <string name="status_complete">작업 완료</string>
+    <string name="status_user_checked">리포트확인</string>
 </resources>

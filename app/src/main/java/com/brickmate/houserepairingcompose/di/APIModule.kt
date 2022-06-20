@@ -11,8 +11,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class APIModule {
-
-
     @Provides
     @Singleton
     fun provideLoginApiService( retrofit: Retrofit)

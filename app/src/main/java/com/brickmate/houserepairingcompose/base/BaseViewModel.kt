@@ -23,6 +23,9 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
     private val _onErrorApiCall = mutableStateOf<ErrorApiResponse?>(null)
     val onErrorApiCall: State<ErrorApiResponse?> = _onErrorApiCall
 
+    private val _shouldShowNoInternetConnection = mutableStateOf<Boolean>(false)
+    val shouldShowNoInternetConnection: State<Boolean> = _shouldShowNoInternetConnection
+
 
     protected fun startCallApiWithLoadingDialog(onCall: suspend () -> Unit) {
         viewModelScope.launch(coroutineDispatcherProvider.Main()) {
@@ -46,7 +49,7 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
         val apiResponse =
             MutableStateFlow<T?>(null)
         when (response) {
-            is NetworkResult.Loading -> {
+            is NetworkResult.LoadingDialog -> {
                 _isLoadingDialog.value = true
             }
             is NetworkResult.Success -> {
@@ -59,12 +62,18 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
                     _onErrorApiCall.value = it
                 }
             }
+            is NetworkResult.NoInternetConnection ->{
+                _shouldShowNoInternetConnection.value = true
+            }
         }
         return apiResponse
     }
 
     fun cancelErrorDialog(){
         _onErrorApiCall.value = null
+    }
+    fun cancelNoInternetDialog(){
+        _shouldShowNoInternetConnection.value = false
     }
 
 

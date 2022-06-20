@@ -3,5 +3,145 @@
     <color name="green">#57BB99</color>
     <color name="red">#F85C57</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="cyan_200">#00A8A4</color>
+    <color name="cyan_500">#00A8A4</color>
+    <color name="cyan_700">#00A8A4</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="cyan_100_percent">#00A8A4</color>
+    <color name="cyan_90_percent">#E600A8A4</color>
+    <color name="cyan_80_percent">#CC00A8A4</color>
+    <color name="cyan_70_percent">#B300A8A4</color>
+    <color name="cyan_60_percent">#9900A8A4</color>
+    <color name="cyan_50_percent">#8000A8A4</color>
+    <color name="cyan_40_percent">#4000A8A4</color>
+    <color name="cyan_30_percent">#3000A8A4</color>
+    <color name="cyan_20_percent">#3300A8A4</color>
+    <color name="cyan_9_percent">#1700A8A4</color>
+
+    <color name="gray_background">#E9E9EA</color>
+    <color name="gray_100_percent">#6D6D6D</color>
+    <color name="gray_90_percent">#E66D6D6D</color>
+    <color name="gray_80_percent">#CC6D6D6D</color>
+    <color name="gray_70_percent">#B36D6D6D</color>
+    <color name="gray_60_percent">#996D6D6D</color>
+    <color name="gray_50_percent">#806D6D6D</color>
+    <color name="gray_40_percent">#666D6D6D</color>
+    <color name="gray_30_percent">#4D6D6D6D</color>
+    <color name="gray_20_percent">#336D6D6D</color>
+    <color name="gray_10_percent">#1A6D6D6D</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_80_percent">#CCFFFFFF</color>
+
+    <color name="green_100_percent">#219653</color>
+    <color name="green_9_percent">#17219653</color>
+
+    <color name="cyan_light_80_percent">#CC00AAA4</color>
+
+    <color name="border_input">#8000A8A4</color>
+    <color name="border_avatar">#57BB99</color>
+    <color name="border_red">#17DA1E1E</color>
+    <color name="background_divider_item">#336D6D6D</color>
+
+    <color name="text_main">#00A8A4</color>
+    <color name="text_black">#FF000000</color>
+    <color name="text_black_70_percent">#B3000000</color>
+    <color name="text_gray_hint">#B36D6D6D</color>
+    <color name="text_gray_100_percent">#6D6D6D</color>
+    <color name="text_gray_70_percent">#B36D6D6D</color>
+    <color name="text_red">#DA1E1E</color>
+    <color name="text_red_calendar">#C90000</color>
+    <color name="text_gray_title">#4C4A4A</color>
+    <color name="text_gray_day">#BCC1CD</color>
+
+
+    <color name="disable">#D2D5D8</color>
+    <color name="stroke_cyan">#57BB99</color>
+
+    <color name="button_kakao">#FFE812</color>
+    <color name="button_naver">#1EC800</color>
+    <color name="button_facebook">#2D4486</color>
+    <color name="button_enable">#00A8A4</color>
+    <color name="text_tab">#D3D3D3</color>
+
+
+    <color name="gray_transparent_33">#54DCD8D5</color>
+    <color name="gray_gradient">#8B8B8B</color>
+    <color name="gray_transparent_80">#F28B8B8B</color>
+    <color name="main_color_view_background">#1700A8A4</color>
+    <color name="orange">#FF7A00</color>
+    <color name="orange_icon">#FF7100</color>
+    <color name="orange_icon_background">#1AFF7100</color>
+    <color name="main_cyan_non_transparent">#E8F7F7</color>
+    <color name="cyan_50_transparent">#8000A8A4</color>
+    <color name="text_gray_sub_title">#616161</color>
+    <color name="button_yellow">#FDD755</color>
+    <color name="button_9_yellow">#17FDD755</color>
+
+    <color name="gray_10_transparent">#1A6D6D6D</color>
+    <color name="gray_transparent_20">#336D6D6D</color>
+    <color name="text_gray_20_percent">#336D6D6D</color>
+    <color name="gray_button">#E2E2E2</color>
+    <color name="button_google">#4A90E2</color>
+
+
+    <!-- General DatePicker-->
+    <color name="selected_date_circle_color">#54B948</color>
+    <!-- Fonts -->
+    <color name="title_color">@color/text_gray_100_percent</color>
+    <color name="date_color">@color/text_gray_100_percent</color>
+    <color name="week_color">@color/text_gray_100_percent</color>
+    <!-- Calendar Date -->
+    <color name="default_date_color">@color/text_gray_100_percent</color>
+    <color name="disable_date_color">#BDBDBD</color>
+    <color name="range_date_color">@color/default_date_color</color>
+    <color name="selected_date_color">@color/text_gray_100_percent</color>
+    <color name="sunday_date_color">@color/text_red_calendar</color>
+    <color name="today_date_color">@color/text_black</color>
+    <color name="range_bg_color">@color/cyan_50_transparent</color>
+    <color name="calendar_text">@color/text_gray_100_percent</color>
+    <color name="calendar_header">@color/cyan_200</color>
+    <color name="calendar_header_title">@color/white</color>
+    <color name="selected_date_circle_color_app">@color/text_gray_100_percent</color>
+    <color name="range_bg_color_app">@color/cyan_50_transparent</color>
+    <color name="blue_button">#0094FF</color>
+    <color name="blue_9_button">#170094FF</color>
+    <color name="red_9_percent">#17F44336</color>
+
+    <!-- color status -->
+    <color name="colorStatusUnknown">#4A90E2</color>
+    <color name="colorStatusPayment">#9244FF</color>
+    <color name="colorStatusWorking">#67E823</color>
+    <color name="colorStatusPending">#44FF4444</color>
+    <color name="colorStatusYellow">#FFFFB900</color>
+    <color name="colorStatusWorkComplete">#007DFF</color>
+    <color name="colorStatusSuccess">#67C23A</color>
+    <color name="colorStatusWarning">#E6A23C</color>
+    <color name="colorStatusEstimate">#F56C6C</color>
+    <color name="colorStatusVisit">#A5CD76</color>
+    <color name="colorStatusCancel">#909399</color>
+    <color name="colorStatusWorkCompleteExtra">#FF7A00</color>
+    <color name="colorStatusUpdateDatetime">#55FF4444</color>
+    <color name="colorStatusAssigned">#FFE500</color>
+    <color name="colorTextStatusCancel">#DA1E1E</color>
+    <color name="colorBackgroundStatusCancel">#FBEAEA</color>
+
+    <!-- color error -->
+    <color name="colorBackgroundDialogDim">#80323232</color>
+    <color name="color_detail_fail">#DA1E1E</color>
+
+    <!-- color tool bar -->
+    <color name="tool_bar_color">#E8F7F7</color>
+
+    <!-- color text disable button select image -->
+    <color name="tool_bar_color_disable">#999999</color>
+
+    <color name="color_enabled">#00A8A4</color>
+    <color name="color_disabled">#D2D5D8</color>
+
+    <color name="color_text_bottom_policy">#666666</color>
 </resources>

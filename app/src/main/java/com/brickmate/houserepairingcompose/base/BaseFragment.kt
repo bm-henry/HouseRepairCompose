@@ -10,17 +10,16 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.brickmate.houserepairingcompose.model.network.NetworkResult
+import com.brickmate.houserepairingcompose.screen.theme.HouseRepairingComposeTheme
 import com.brickmate.houserepairingcompose.ui_component.ErrorDialog
 import com.brickmate.houserepairingcompose.ui_component.LoadingDialog
-import kotlinx.coroutines.flow.MutableStateFlow
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     @LayoutRes
     abstract fun getLayoutId(): Int
-    abstract fun composeLayoutID(): Int
+    abstract fun composeLayoutID(): Int?
     protected abstract val viewModel: VM
-    var navController : NavController? = null
+    var navController: NavController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,14 +28,18 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     ): View? {
         val view = inflater.inflate(getLayoutId(), container, false)
         navController = findNavController()
-        view.findViewById<ComposeView>(composeLayoutID()).setContent {
-            ComposableView()
+        composeLayoutID()?.let {
+            view.findViewById<ComposeView>(it).setContent {
+                HouseRepairingComposeTheme {
+                    ComposableView()
+                }
+            }
+
         }
 
-        return  view
+        return view
 
     }
-
 
 
     @Composable
@@ -50,7 +53,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     fun HandleInternetResponse() {
         with(viewModel) {
             isLoadingDialog.value.let {
-                if(it) LoadingDialog()
+                if (it) LoadingDialog()
             }
             onErrorApiCall.value.let { errorResponse ->
                 errorResponse?.message?.let {
@@ -59,7 +62,14 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
                     })
                 }
             }
+            shouldShowNoInternetConnection.value.let { showShowDialog ->
+                if(showShowDialog){
+                    ErrorDialog(message = "Please Check Your Internet Connetion", onConfirmClick = {
+                        viewModel.cancelNoInternetDialog()
+                    })
+                }
+            }
         }
-
     }
+
 }

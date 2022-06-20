@@ -29,6 +29,8 @@ object Dependencies {
             const val coroutineVersion ="1.3.9"
             const val lifecycleVersion ="2.5.0-rc01"
             const val okhttp3Version = "3.14.9"
+            const val viewPager2Version = "1.0.0"
+            const val googleMaterialVersion = "1.6.1"
 
         }
         const val androidCore = "androidx.core:core-ktx:${Version.coreKtxVersion}"
@@ -55,6 +57,8 @@ object Dependencies {
         const val safeArgsKotlin  = "androidx.navigation.safeargs.kotlin"
         const val hilt = "com.google.dagger:hilt-android:${Version.hiltVersion}"
         const val hiltComplier = "com.google.dagger:hilt-android-compiler:${Version.hiltVersion}"
+        const val viewPager2 = "androidx.viewpager2:viewpager2:${Version.viewPager2Version}"
+        const val googelMaterial = "com.google.android.material:material:${Version.googleMaterialVersion}"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
         const val retrofitConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"

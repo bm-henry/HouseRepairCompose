@@ -1,4 +1,4 @@
-package com.brickmate.houserepairingcompose.fragment.Login
+package com.brickmate.houserepairingcompose.fragment.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -37,23 +37,19 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     @Composable
     override fun ComposableView() {
-        HouseRepairingComposeTheme {
-            super.HandleInternetResponse()
-            LoginBody(onLoginClick = { userName, password ->
-                viewModel.login(LoginNormalRequest(userName, password))
-            })
-            viewModel.loginResponse.value?.let {
-                navigateToHomeFragment()
-            }
+        super.ComposableView()
+        LoginBody(onLoginClick = { userName, password ->
+            viewModel.login(LoginNormalRequest(userName, password))
+        })
+        viewModel.loginResponse.value?.let {
+            navigateToHomeFragment()
         }
-
     }
 
 
     private fun navigateToHomeFragment() {
         val loginNavigationAction = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
         navController?.navigate(loginNavigationAction)
-
     }
 
 
@@ -172,8 +168,8 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
                         },
                         idPassEmpty = {
+                            //  shouldShowErrorPassword = true
                             shouldShowErrorID = true
-                            shouldShowErrorPassword = true
                         }
 
                     )
