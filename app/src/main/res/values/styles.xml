@@ -342,7 +342,7 @@
         <item name="cornerRadius">@dimen/radius_ic_rectangle</item>
         <item name="android:insetTop">@dimen/long_0dp</item>
         <item name="android:insetBottom">@dimen/long_0dp</item>
-        <item name="backgroundTint">@color/color_states_material_button</item>
+        <item name="backgroundTint">@color/red</item>
     </style>
 
     <style name="ThemeButtonPay" parent="Widget.MaterialComponents.TimePicker.ImageButton">

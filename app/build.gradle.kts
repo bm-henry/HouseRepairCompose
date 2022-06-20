@@ -121,12 +121,15 @@ dependencies {
     implementation(Dependencies.Libraries.okhttp3Logging)
     implementation(Dependencies.Libraries.viewPager2)
     implementation(Dependencies.Libraries.googelMaterial)
+    implementation(Dependencies.Libraries.jsoup)
+    implementation(Dependencies.Libraries.glide)
 
     // hilt
     kapt (Dependencies.Libraries.hiltComplier)
     kapt (Dependencies.Libraries.lifeCycleProcessor)
     implementation (Dependencies.Libraries.hilt)
 
+    kapt (Dependencies.Libraries.glideKapt)
 
     //test
     testImplementation(Dependencies.Libraries.jUnit)

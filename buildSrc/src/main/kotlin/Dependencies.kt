@@ -31,6 +31,8 @@ object Dependencies {
             const val okhttp3Version = "3.14.9"
             const val viewPager2Version = "1.0.0"
             const val googleMaterialVersion = "1.6.1"
+            const val jsoupVersion = "1.13.1"
+            const val glideVersion = "4.12.0"
 
         }
         const val androidCore = "androidx.core:core-ktx:${Version.coreKtxVersion}"
@@ -66,7 +68,9 @@ object Dependencies {
 
         const val okhttp3 ="com.squareup.okhttp3:okhttp:${Version.okhttp3Version}"
         const val okhttp3Logging ="com.squareup.okhttp3:logging-interceptor:${Version.okhttp3Version}"
-
+        const val jsoup ="org.jsoup:jsoup:${Version.jsoupVersion}"
+        const val glide = "com.github.bumptech.glide:glide:${Version.glideVersion}"
+        const val glideKapt = "com.github.bumptech.glide:compiler:${Version.glideVersion}"
 
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutineVersion}"
 

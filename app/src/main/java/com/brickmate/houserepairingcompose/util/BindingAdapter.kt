@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.brickmate.houserepairingcompose.R
 import com.brickmate.houserepairingcompose.enum.*
+import com.brickmate.houserepairingcompose.model.profile.MyInfo
 import com.brickmate.houserepairingcompose.util.Constant.ROLE_EMPLOYEE
 import com.brickmate.houserepairingcompose.util.Constant.ROLE_MANAGER
 import com.brickmate.houserepairingcompose.util.TimeUtil.getDateOfMonth
