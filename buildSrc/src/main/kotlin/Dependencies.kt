@@ -33,6 +33,8 @@ object Dependencies {
             const val googleMaterialVersion = "1.6.1"
             const val jsoupVersion = "1.13.1"
             const val glideVersion = "4.12.0"
+            const val pagingVersion = "1.0.0-alpha15"
+            const val securityCryptoVersion = "1.0.0"
 
         }
         const val androidCore = "androidx.core:core-ktx:${Version.coreKtxVersion}"
@@ -56,6 +58,7 @@ object Dependencies {
         const val navigationCompose ="androidx.navigation:navigation-fragment:${Version.navVersion}"
         const val hiltPlugin  = "dagger.hilt.android.plugin"
         const val safeArgs  = "androidx.navigation.safeargs"
+        const val parcelize  = "kotlin-parcelize"
         const val safeArgsKotlin  = "androidx.navigation.safeargs.kotlin"
         const val hilt = "com.google.dagger:hilt-android:${Version.hiltVersion}"
         const val hiltComplier = "com.google.dagger:hilt-android-compiler:${Version.hiltVersion}"
@@ -71,6 +74,10 @@ object Dependencies {
         const val jsoup ="org.jsoup:jsoup:${Version.jsoupVersion}"
         const val glide = "com.github.bumptech.glide:glide:${Version.glideVersion}"
         const val glideKapt = "com.github.bumptech.glide:compiler:${Version.glideVersion}"
+        const val paging = "androidx.paging:paging-compose:${Version.pagingVersion}"
+        const val securityCrypto = "androidx.security:security-crypto:${Version.securityCryptoVersion}"
+
+
 
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutineVersion}"
 

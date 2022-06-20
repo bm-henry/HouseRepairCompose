@@ -31,7 +31,6 @@ open class BaseRepository() {
             try {
                 if (Network.isNetworkAvailable(context)) {
                     emit(NetworkResult.LoadingDialog())
-                    Thread.sleep(1000)
                     val result = safeApiResult(call)
                     emit(result)
                 } else {

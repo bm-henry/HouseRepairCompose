@@ -1,5 +1,6 @@
 package com.brickmate.houserepairingcompose.util
 
+import android.content.Context
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -15,85 +16,64 @@ import com.brickmate.houserepairingcompose.util.TimeUtil.getDayAnTimeView
 import com.brickmate.houserepairingcompose.util.TimeUtil.getTimeFromTimestamp24hFromString
 
 
-@BindingAdapter("loadStatusOffer")
-fun loadStatusOffer(view: TextView, status: Int) {
-    when (status) {
 
+fun loadStatusOffer( status: Int, context: Context) : CharSequence {
+  return  when (status) {
         STATUS_ASSIGNING -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.cyan_100_percent))
-            view.text = view.resources.getText(R.string.status_assigning)
-            view.setBackgroundResource(R.drawable.border_offer_accept)
+            context.resources.getText(R.string.status_assigning)
         }
 
         STATUS_ASSIGNED, STATUS_REASSIGNED -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.cyan_100_percent))
-            view.text = view.resources.getText(R.string.status_assigned)
-            view.setBackgroundResource(R.drawable.border_offer_accept)
+          context.resources.getText(R.string.status_assigned)
         }
         STATUS_REASSIGNING -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.cyan_100_percent))
-            view.text = view.resources.getText(R.string.status_assigning)
-            view.setBackgroundResource(R.drawable.border_offer_accept)
+            context.resources.getText(R.string.status_assigning)
         }
         STATUS_ESTIMATE -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.cyan_100_percent))
-            view.text = view.resources.getText(R.string.status_estimate)
-            view.setBackgroundResource(R.drawable.border_offer_accept)
+           context.resources.getText(R.string.status_estimate)
         }
         STATUS_ESTIMATE_EXTRA -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.cyan_100_percent))
-            view.text = view.resources.getText(R.string.status_estimate_extra)
-            view.setBackgroundResource(R.drawable.border_offer_accept)
+            context.resources.getText(R.string.status_estimate_extra)
         }
         STATUS_PAYMENT_FINISH -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.cyan_100_percent))
-            view.text = view.resources.getText(R.string.status_payment)
-            view.setBackgroundResource(R.drawable.border_offer_accept)
+            context.resources.getText(R.string.status_payment)
         }
         STATUS_PAYMENT_EXTRA_FINISH -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.cyan_100_percent))
-            view.text = view.resources.getText(R.string.status_payment_extra)
-            view.setBackgroundResource(R.drawable.border_offer_accept)
+           context.resources.getText(R.string.status_payment_extra)
         }
         STATUS_VISIT -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.button_yellow))
-            view.text = view.resources.getText(R.string.status_visit)
-            view.setBackgroundResource(R.drawable.border_offer_visiting)
+            context.resources.getText(R.string.status_visit)
         }
         STATUS_WORKING -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.blue_button))
-            view.text = view.resources.getText(R.string.status_working)
-            view.setBackgroundResource(R.drawable.border_offer_working)
+            context.resources.getText(R.string.status_working)
         }
         STATUS_CUSTOMER_CANCEL, STATUS_ENGINEER_CANCEL, STATUS_CANCEL -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.text_red))
-            view.text = view.resources.getText(R.string.status_cancel)
-            view.setBackgroundResource(R.drawable.border_offer_cancel)
+            context.resources.getText(R.string.status_cancel)
         }
         STATUS_WORK_COMPLETE, STATUS_WORK_COMPLETE_NEED_EXTRA -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.green_100_percent))
-            view.text = view.resources.getText(R.string.status_complete)
-            view.setBackgroundResource(R.drawable.border_offer_complete)
+            context.resources.getText(R.string.status_complete)
 
         }
         STATUS_CUSTOMER_CHANGE_DATETIME -> {
-            view.setTextColor(ContextCompat.getColor(view.context, R.color.cyan_100_percent))
-            view.text = view.resources.getText(R.string.common_type_request_user_change_date)
-            view.setBackgroundResource(R.drawable.border_offer_accept)
-
+            context.resources.getText(R.string.common_type_request_user_change_date)
         }
 
 
-    }
+      else -> {
+          ""
+      }
+  }
 
 }
 
-@BindingAdapter("offerDesireDate")
-fun offerDesireDate(view: TextView, date: String?) {
+
+fun offerDesireDate(date: String?): String {
     date?.let {
-        val data = "${getDateOfMonth(date)} ${getDateOfWeek(date)}"
-        view.text = data
+        return "${getDateOfMonth(date)} ${getDateOfWeek(date)}"
+
+
     }
+    return ""
 }
 
 @BindingAdapter("offerDesireDateAndYear")

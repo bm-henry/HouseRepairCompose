@@ -1,6 +1,5 @@
 package com.brickmate.houserepairingcompose.fragment.login
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import com.brickmate.houserepairingcompose.api_service.login.LoginRepository
 import com.brickmate.houserepairingcompose.base.BaseViewModel
@@ -17,14 +16,14 @@ class LoginViewModel @Inject constructor(
     private var _loginResponse = mutableStateOf<LoginResponse?>(null)
     val loginResponse = _loginResponse
 
-    fun login(loginNormalRequest: LoginNormalRequest): MutableState<LoginResponse?> {
+    fun login(loginNormalRequest: LoginNormalRequest) {
         startCallApiWithLoadingDialog {
             repository.login(loginNormalRequest).collect {
                 _loginResponse.value = handleInternetResponse(it).value
             }
 
         }
-        return  loginResponse
+
     }
 
 

@@ -17,23 +17,32 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.brickmate.houserepairingcompose.BuildConfig
 import com.brickmate.houserepairingcompose.R
 import com.brickmate.houserepairingcompose.base.BaseFragment
+import com.brickmate.houserepairingcompose.base.BaseNoToolBarFragment
 import com.brickmate.houserepairingcompose.model.login.LoginNormalRequest
 import com.brickmate.houserepairingcompose.screen.theme.Green200
-import com.brickmate.houserepairingcompose.screen.theme.HouseRepairingComposeTheme
+import com.brickmate.houserepairingcompose.sharepref.SharePreferenceManager
 import com.brickmate.houserepairingcompose.ui_component.AppOutLineTextView
 import com.brickmate.houserepairingcompose.ui_component.ContainButton
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<LoginViewModel>() {
+class LoginFragment : BaseNoToolBarFragment<LoginViewModel>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_login
 
     override val viewModel: LoginViewModel by viewModels()
 
     override fun composeLayoutID() = R.id.composeContainer_login
+
+    @Inject
+    lateinit var sharePreference: SharePreferenceManager
+
+
+
 
     @Composable
     override fun ComposableView() {
@@ -42,6 +51,9 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
             viewModel.login(LoginNormalRequest(userName, password))
         })
         viewModel.loginResponse.value?.let {
+            it.accessToken?.let {accessToken ->
+                sharePreference.userTokenCache = accessToken
+            }
             navigateToHomeFragment()
         }
     }
@@ -85,14 +97,14 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
     ) {
         val context = LocalContext.current
         val lifecycleOwner = LocalLifecycleOwner.current
-        HouseRepairingComposeTheme() {
-            Box {
-                Column(modifier = Modifier.fillMaxSize()) {
-                    LoginForm(onLoginClick = onLoginClick)
-                }
 
+        Box {
+            Column(modifier = Modifier.fillMaxSize()) {
+                LoginForm(onLoginClick = onLoginClick)
             }
+
         }
+
     }
 
     fun onLoginClick() {
@@ -106,6 +118,10 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
     ) {
         var userName by rememberSaveable { mutableStateOf("") }
         var password by rememberSaveable { mutableStateOf("") }
+        if(BuildConfig.DEBUG){
+            userName = "engineer"
+            password = "engineer@123"
+        }
         var shouldShowErrorPassword by rememberSaveable { mutableStateOf(false) }
         var shouldShowErrorID by rememberSaveable { mutableStateOf(false) }
         Column(
@@ -178,4 +194,6 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
             )
         }
     }
+
+
 }

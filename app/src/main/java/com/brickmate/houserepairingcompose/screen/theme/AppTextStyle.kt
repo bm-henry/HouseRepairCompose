@@ -38,6 +38,13 @@ object AppTextStyle {
         platformStyle = PlatformTextStyle(includeFontPadding = false)
 
     )
+    val medium14 = TextStyle(
+        fontFamily = noSanFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = false)
+
+    )
     val medium12 = TextStyle(
         fontFamily = noSanFamily,
         fontWeight = FontWeight.Medium,
@@ -60,10 +67,24 @@ object AppTextStyle {
         platformStyle = PlatformTextStyle(includeFontPadding = false)
 
     )
+    val bold24 = TextStyle(
+        fontFamily = noSanFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = false)
+
+    )
     val bold16 = TextStyle(
         fontFamily = noSanFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = false)
+
+    )
+    val bold10 = TextStyle(
+        fontFamily = noSanFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 10.sp,
         platformStyle = PlatformTextStyle(includeFontPadding = false)
 
     )

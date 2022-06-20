@@ -3,7 +3,7 @@ plugins {
     id(Dependencies.BuildPlugin.kotlin)
     id(Dependencies.Libraries.hiltPlugin)
     id(Dependencies.Libraries.safeArgs)
-
+    id(Dependencies.Libraries.parcelize)
     kotlin("kapt")
 
 
@@ -123,6 +123,9 @@ dependencies {
     implementation(Dependencies.Libraries.googelMaterial)
     implementation(Dependencies.Libraries.jsoup)
     implementation(Dependencies.Libraries.glide)
+    implementation(Dependencies.Libraries.paging)
+    implementation(Dependencies.Libraries.securityCrypto)
+
 
     // hilt
     kapt (Dependencies.Libraries.hiltComplier)

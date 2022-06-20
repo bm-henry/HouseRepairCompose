@@ -1,6 +1,7 @@
 package com.brickmate.houserepairingcompose.di
 
 import com.brickmate.houserepairingcompose.api_service.login.LoginService
+import com.brickmate.houserepairingcompose.api_service.offer.OfferService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,4 +16,9 @@ class APIModule {
     @Singleton
     fun provideLoginApiService( retrofit: Retrofit)
             : LoginService = retrofit.create(LoginService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideOfferApiService( retrofit: Retrofit)
+            : OfferService = retrofit.create(OfferService::class.java)
 }

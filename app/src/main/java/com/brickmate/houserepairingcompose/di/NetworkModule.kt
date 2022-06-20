@@ -1,6 +1,7 @@
 package com.brickmate.houserepairingcompose.di
 
 import com.brickmate.houserepairingcompose.BuildConfig
+import com.brickmate.houserepairingcompose.sharepref.SharePreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +18,7 @@ import javax.inject.Singleton
 class NetworkModule {
     @Singleton
     @Provides
-    fun provideHTTPClient() : OkHttpClient{
+    fun provideHTTPClient(preferenceManager: SharePreferenceManager) : OkHttpClient{
         val okHttpClientBuilder = OkHttpClient.Builder()
             .callTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
@@ -28,6 +29,10 @@ class NetworkModule {
             chain.proceed(
                 chain.request().newBuilder()
                     .addHeader("Accept", "application/json")
+                    .addHeader(
+                        "Authorization",
+                        "Bearer " + preferenceManager.userTokenCache
+                    )
                     .build()
             )
         }

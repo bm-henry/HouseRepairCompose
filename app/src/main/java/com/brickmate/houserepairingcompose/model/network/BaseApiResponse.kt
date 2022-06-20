@@ -2,7 +2,7 @@ package com.brickmate.houserepairingcompose.model.network
 
 import com.google.gson.annotations.SerializedName
 
- class BaseApiResponse <T>{
+class BaseApiResponse<T> {
     @SerializedName("code")
     var code: Int? = null
 
@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName
     var success: Boolean? = null
 
     @SerializedName("data")
-    var data: T?= null
+    var data: T? = null
 
 
 }
