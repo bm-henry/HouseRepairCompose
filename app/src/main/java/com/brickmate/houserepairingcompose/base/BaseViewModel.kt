@@ -20,6 +20,9 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
     private val _isLoadingDialog = mutableStateOf(false)
     val isLoadingDialog: State<Boolean> = _isLoadingDialog
 
+    private val _isLoadingShimmer = mutableStateOf(false)
+    val isLoadingShimmer: State<Boolean> = _isLoadingShimmer
+
     private val _onErrorApiCall = mutableStateOf<ErrorApiResponse?>(null)
     val onErrorApiCall: State<ErrorApiResponse?> = _onErrorApiCall
 
@@ -27,23 +30,23 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
     val shouldShowNoInternetConnection: State<Boolean> = _shouldShowNoInternetConnection
 
 
-    protected fun startCallApiWithLoadingDialog(onCall: suspend () -> Unit) {
+    protected fun startCallApi(onCall: suspend () -> Unit) {
         viewModelScope.launch(coroutineDispatcherProvider.Main()) {
             onCall.invoke()
         }
     }
 
-    protected fun startCallApiWithShimmerEffect(onCall: suspend () -> Unit) {
-        viewModelScope.launch(coroutineDispatcherProvider.Main()) {
-            onCall.invoke()
-        }
-    }
-
-    protected fun startCallApiWithNonEffect(onCall: suspend () -> Unit) {
-        viewModelScope.launch(coroutineDispatcherProvider.Main()) {
-            onCall.invoke()
-        }
-    }
+//    protected fun startCallApiWithShimmerEffect(onCall: suspend () -> Unit) {
+//        viewModelScope.launch(coroutineDispatcherProvider.Main()) {
+//            onCall.invoke()
+//        }
+//    }
+//
+//    protected fun startCallApiWithNonEffect(onCall: suspend () -> Unit) {
+//        viewModelScope.launch(coroutineDispatcherProvider.Main()) {
+//            onCall.invoke()
+//        }
+//    }
 
     fun <T> handleInternetResponse(response: NetworkResult<T>): MutableStateFlow<T?> {
         val apiResponse =
@@ -54,16 +57,22 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
             }
             is NetworkResult.Success -> {
                 _isLoadingDialog.value = false
+                _isLoadingShimmer.value = false
+
                 apiResponse.value = response.dataResponse?.data
             }
             is NetworkResult.Error -> {
                 _isLoadingDialog.value = false
+                _isLoadingShimmer.value = false
                 response.errorApiResponse?.let {
                     _onErrorApiCall.value = it
                 }
             }
             is NetworkResult.NoInternetConnection ->{
                 _shouldShowNoInternetConnection.value = true
+            }
+            is NetworkResult.LoadingShimmer -> {
+                _isLoadingShimmer.value = true
             }
         }
         return apiResponse

@@ -8,6 +8,7 @@ import com.brickmate.houserepairingcompose.util.Network
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -24,13 +25,32 @@ open class BaseRepository() {
     @ApplicationContext
     lateinit var context: Context
 
-    suspend fun <T : Any> safeApiCall(
+    suspend fun <T : Any> safeApiCallWithLoadingDialog(
         call: suspend () -> Response<BaseApiResponse<T>>,
     ): Flow<NetworkResult<T>> {
         return flow {
             try {
                 if (Network.isNetworkAvailable(context)) {
                     emit(NetworkResult.LoadingDialog())
+                    val result = safeApiResult(call)
+                    emit(result)
+                } else {
+                    emit(NetworkResult.NoInternetConnection())
+                }
+
+            } catch (e: Exception) {
+                emit(NetworkResult.Error(ErrorApiResponse(message = e.toString())))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+    suspend fun <T : Any> safeApiCallWithShimmer(
+        call: suspend () -> Response<BaseApiResponse<T>>,
+    ): Flow<NetworkResult<T>> {
+        return flow {
+            try {
+                if (Network.isNetworkAvailable(context)) {
+                    emit(NetworkResult.LoadingShimmer())
+                    delay(1000)
                     val result = safeApiResult(call)
                     emit(result)
                 } else {

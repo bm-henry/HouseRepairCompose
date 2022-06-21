@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
@@ -24,12 +26,21 @@ import com.brickmate.houserepairingcompose.ui_component.TopToolBar
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     @LayoutRes
     abstract fun getLayoutId(): Int
+
     abstract fun composeLayoutID(): Int?
+
     abstract var fragmentTitle: String?
+
     protected abstract val viewModel: VM
+
     var navController: NavController? = null
-    abstract val shouldShowHomeBtn : Boolean
-    abstract val shouldShowToolBar : Boolean
+
+    abstract val shouldShowHomeBtn: Boolean
+
+    abstract val shouldShowToolBar: Boolean
+
+    var shouldShowShimmerEffect: MutableState<Boolean> = mutableStateOf(false)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,7 +52,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
             view.findViewById<ComposeView>(it).setContent {
                 HouseRepairingComposeTheme {
                     Column() {
-                        if(shouldShowToolBar){
+                        if (shouldShowToolBar) {
                             TopToolBar(title = fragmentTitle, isShowHomeBtn = shouldShowHomeBtn)
                         }
                         Box(
@@ -57,9 +68,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
             }
 
         }
-
         return view
-
     }
 
 
@@ -76,6 +85,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
             isLoadingDialog.value.let {
                 if (it) LoadingDialog()
             }
+            isLoadingShimmer.value.let {
+                shouldShowShimmerEffect.value = it
+            }
+
             onErrorApiCall.value.let { errorResponse ->
                 errorResponse?.message?.let {
                     ErrorDialog(message = it, onConfirmClick = {
@@ -92,5 +105,6 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
             }
         }
     }
+
 
 }

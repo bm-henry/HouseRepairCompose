@@ -1,9 +1,13 @@
-package com.brickmate.houserepairingcompose.fragment.order
+package com.brickmate.houserepairingcompose.fragment.offer
 
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import com.brickmate.houserepairingcompose.api_service.offer.OfferRepository
 import com.brickmate.houserepairingcompose.base.BaseViewModel
+import com.brickmate.houserepairingcompose.enum.OfferStatus
 import com.brickmate.houserepairingcompose.model.offer.Offer
+import com.brickmate.houserepairingcompose.util.Constant
+import com.brickmate.houserepairingcompose.util.Util
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -11,30 +15,36 @@ import javax.inject.Inject
 class OfferViewModel @Inject constructor(private val offerRepository: OfferRepository) :
     BaseViewModel() {
     private var _offer = mutableStateOf<List<Offer>>(listOf())
-    val offer = _offer
+    val offer: State<List<Offer>> = _offer
+    var page: Int = 1
+
 
     init {
     }
 
     fun getListOfferHome(
-        limit: Int,
+        limit: Int = Constant.LIMIT_GET_OFFER,
         keyword: String? = null,
         from: String? = null,
         to: String? = null,
-        status: String
+        status: String = Util.getStatus(OfferStatus.HOME),
+        page : Int = 1
     ) {
-        startCallApiWithLoadingDialog {
+        startCallApi {
             offerRepository.getListOffer(
                 limit = limit,
                 keyword = keyword,
                 from = from,
                 to = to,
-                status = status
+                status = status,
+                page = page
             ).collect {
                 handleInternetResponse(it).value?.let {
-                    offer.value = it
+                    _offer.value += it
                 }
             }
         }
     }
+
+
 }

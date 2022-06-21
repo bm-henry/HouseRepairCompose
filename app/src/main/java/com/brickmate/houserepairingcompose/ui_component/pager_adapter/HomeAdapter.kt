@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.brickmate.houserepairingcompose.fragment.order.OfferFragment
+import com.brickmate.houserepairingcompose.fragment.offer.OfferFragment
 
 
 class HomeAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :

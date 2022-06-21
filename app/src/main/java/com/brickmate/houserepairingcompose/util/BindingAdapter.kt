@@ -2,11 +2,16 @@ package com.brickmate.houserepairingcompose.util
 
 import android.content.Context
 import android.widget.TextView
+import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.brickmate.houserepairingcompose.R
 import com.brickmate.houserepairingcompose.enum.*
 import com.brickmate.houserepairingcompose.model.profile.MyInfo
+import com.brickmate.houserepairingcompose.screen.theme.Blue
+import com.brickmate.houserepairingcompose.screen.theme.GreenMain
+import com.brickmate.houserepairingcompose.screen.theme.Red
+import com.brickmate.houserepairingcompose.screen.theme.Yellow
 import com.brickmate.houserepairingcompose.util.Constant.ROLE_EMPLOYEE
 import com.brickmate.houserepairingcompose.util.Constant.ROLE_MANAGER
 import com.brickmate.houserepairingcompose.util.TimeUtil.getDateOfMonth
@@ -17,7 +22,7 @@ import com.brickmate.houserepairingcompose.util.TimeUtil.getTimeFromTimestamp24h
 
 
 
-fun loadStatusOffer( status: Int, context: Context) : CharSequence {
+fun loadStatusTextOffer(status: Int, context: Context) : CharSequence {
   return  when (status) {
         STATUS_ASSIGNING -> {
             context.resources.getText(R.string.status_assigning)
@@ -63,6 +68,26 @@ fun loadStatusOffer( status: Int, context: Context) : CharSequence {
           ""
       }
   }
+
+}
+
+fun loadStatusOfferColor(status: Int) : Color {
+    return when (status) {
+
+        STATUS_VISIT-> {
+            Yellow
+        }
+        STATUS_WORKING -> {
+            Blue
+        }
+        STATUS_CUSTOMER_CANCEL, STATUS_ENGINEER_CANCEL, STATUS_CANCEL -> {
+            Red
+        }
+        else  -> {
+            GreenMain
+        }
+
+    }
 
 }
 

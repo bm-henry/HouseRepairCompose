@@ -13,39 +13,42 @@
         <entry key="../../../../../layout/compose-model-1654760822194.xml" value="0.23015202702702703" />
         <entry key="../../../../../layout/compose-model-1654769462847.xml" value="0.5" />
         <entry key="../../../../../layout/compose-model-1654770481520.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655178194058.xml" value="0.39545454545454545" />
+        <entry key="../../../../../layout/compose-model-1655189441031.xml" value="0.18888888888888888" />
+        <entry key="../../../../../layout/compose-model-1655191733250.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655194281494.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655203270910.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655263537991.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655268817699.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655276318748.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655781863158.xml" value="0.335" />
+        <entry key="../../../../../layout/compose-model-1655783241680.xml" value="1.0" />
+        <entry key="../../../../../layout/compose-model-1655784244588.xml" value="0.2601851851851852" />
+        <entry key="../../../../../layout/compose-model-1655787579240.xml" value="0.25" />
+        <entry key="../../../../../layout/compose-model-1655787579245.xml" value="0.33055555555555555" />
+        <entry key="../../../../../layout/compose-model-1655787603794.xml" value="0.17962962962962964" />
+        <entry key="../../../../../layout/compose-model-1655787878641.xml" value="0.17962962962962964" />
+        <entry key="../../../../../layout/compose-model-1655808418318.xml" value="1.0" />
+        <entry key="../../../../../layout/compose-model-1655809498561.xml" value="0.33055555555555555" />
         <entry key="../../../../../layout/custom_preview.xml" value="0.15925925925925927" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/border_offer_complete.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/border_offer_visiting.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/border_rectangle_corner_10.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/border_rectangle_corner_34.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/border_rectangle_corner_4.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/border_rectangle_input_focus.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/ic_check_circle_dot_cyan.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/ic_line_cyan_50.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/ic_line_gray.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/ic_notices.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/ic_polygon_down.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/ic_polygon_down_24.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/ic_uncheck_square_gray_24.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/loading_img.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/rounded_conner_bottom_sheet.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/selector_check_box_circle_dot_cyan.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/selector_check_box_square_cyan_32.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/selector_check_box_square_gray_24.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/selector_input.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/drawable-v24/transform_color.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/layout/fragment_login.xml" value="0.1" />
-        <entry key="..\:/AndroidCompose/HouseRepairCompose/app/src/main/res/layout/fragment_order.xml" value="0.2351851851851852" />
+        <entry key="app/src/main/res/drawable/border_offer_accept.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/border_rectangle_white_80.xml" value="0.2875" />
+        <entry key="app/src/main/res/drawable/border_rectangle_yellow.xml" value="0.2875" />
+        <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.332" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.332" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.2875" />
+        <entry key="app/src/main/res/drawable/ic_support.xml" value="0.332" />
+        <entry key="app/src/main/res/drawable/ic_video.xml" value="0.332" />
+        <entry key="app/src/main/res/drawable/navigation_view_colored.xml" value="0.332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.4078125" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

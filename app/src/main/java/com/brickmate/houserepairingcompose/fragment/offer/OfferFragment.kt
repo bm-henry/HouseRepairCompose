@@ -1,4 +1,4 @@
-package com.brickmate.houserepairingcompose.fragment.order
+package com.brickmate.houserepairingcompose.fragment.offer
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -14,7 +15,8 @@ import com.brickmate.houserepairingcompose.R
 import com.brickmate.houserepairingcompose.base.BaseToolBarFragment
 import com.brickmate.houserepairingcompose.enum.OfferStatus
 import com.brickmate.houserepairingcompose.model.offer.Offer
-import com.brickmate.houserepairingcompose.ui_component.ItemOffer
+import com.brickmate.houserepairingcompose.ui_component.offer.ItemShimmerOffer
+import com.brickmate.houserepairingcompose.ui_component.offer.OfferList
 import com.brickmate.houserepairingcompose.util.Constant.LIMIT_GET_OFFER
 import com.brickmate.houserepairingcompose.util.Util.getStatus
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +35,7 @@ class OfferFragment : BaseToolBarFragment<OfferViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getListOfferHome(LIMIT_GET_OFFER, "", status = getStatus(OfferStatus.HOME))
+        viewModel.getListOfferHome(keyword = "")
     }
 
     @Composable
@@ -51,9 +53,10 @@ class OfferFragment : BaseToolBarFragment<OfferViewModel>() {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                OfferList(modifier =Modifier.padding(vertical = 12.dp),offers = viewModel.offer.value)
+                OfferList(modifier =Modifier, isLoading =shouldShowShimmerEffect.value,offers = viewModel.offer.value, onLoadMore = {
+                    viewModel.getListOfferHome(keyword = "", page = viewModel.page++)
+                })
             }
-
         }
     }
 
@@ -62,19 +65,7 @@ class OfferFragment : BaseToolBarFragment<OfferViewModel>() {
         fun createInstance() = OfferFragment()
     }
 
-    @Composable
-    fun OfferList(modifier: Modifier = Modifier,offers: List<Offer>) {
-        LazyColumn(
-            modifier = modifier,
-            state = rememberLazyListState(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            items(offers) {
-                it
-                ItemOffer(offerItem = it)
-            }
-        }
-    }
+
 
 
 }

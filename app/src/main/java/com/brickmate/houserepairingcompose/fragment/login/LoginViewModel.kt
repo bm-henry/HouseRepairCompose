@@ -17,12 +17,14 @@ class LoginViewModel @Inject constructor(
     val loginResponse = _loginResponse
 
     fun login(loginNormalRequest: LoginNormalRequest) {
-        startCallApiWithLoadingDialog {
+        startCallApi {
             repository.login(loginNormalRequest).collect {
                 _loginResponse.value = handleInternetResponse(it).value
             }
 
         }
+
+
 
     }
 

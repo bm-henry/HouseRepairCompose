@@ -23,7 +23,8 @@ interface OfferService {
         @Query("keyword") keyword: String? = null,
         @Query("from") from: String? = null,
         @Query("to") to: String? = null,
-        @Query("ids_status") status: String
+        @Query("ids_status") status: String,
+
     ):  Response<BaseApiResponse<List<Offer>>>
 
 }
