@@ -1,6 +1,8 @@
 package com.brickmate.houserepairingcompose.fragment.offer
 
+import android.util.Log
 import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import com.brickmate.houserepairingcompose.api_service.offer.OfferRepository
 import com.brickmate.houserepairingcompose.base.BaseViewModel
@@ -14,12 +16,23 @@ import javax.inject.Inject
 @HiltViewModel
 class OfferViewModel @Inject constructor(private val offerRepository: OfferRepository) :
     BaseViewModel() {
-    private var _offer = mutableStateOf<List<Offer>>(listOf())
-    val offer: State<List<Offer>> = _offer
-    var page: Int = 1
+    private var _offer = mutableStateListOf<Offer>()
+    val offer=_offer
+    private var _page: Int = 1
 
 
     init {
+    }
+
+    fun clearCurrentListOffer() {
+        _page =1
+        _offer.clear()
+
+
+    }
+
+    fun inCreasePage() {
+        _page++
     }
 
     fun getListOfferHome(
@@ -28,7 +41,6 @@ class OfferViewModel @Inject constructor(private val offerRepository: OfferRepos
         from: String? = null,
         to: String? = null,
         status: String = Util.getStatus(OfferStatus.HOME),
-        page : Int = 1
     ) {
         startCallApi {
             offerRepository.getListOffer(
@@ -37,10 +49,10 @@ class OfferViewModel @Inject constructor(private val offerRepository: OfferRepos
                 from = from,
                 to = to,
                 status = status,
-                page = page
+                page = _page
             ).collect {
                 handleInternetResponse(it).value?.let {
-                    _offer.value += it
+                    _offer.addAll(it)
                 }
             }
         }

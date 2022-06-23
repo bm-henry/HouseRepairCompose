@@ -1,5 +1,6 @@
 package com.brickmate.houserepairingcompose.fragment.home
 
+import androidx.compose.runtime.Composable
 import androidx.fragment.app.viewModels
 import com.brickmate.houserepairingcompose.R
 import com.brickmate.houserepairingcompose.base.BaseBindingFragment
@@ -32,4 +33,6 @@ class HomeFragment : BaseBindingFragment<FragmentHomeBinding, HomeViewModel>() {
         dataBinding.mainViewPager.offscreenPageLimit = 1
         dataBinding.mainViewPager.isUserInputEnabled = false
     }
+
+
 }

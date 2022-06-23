@@ -37,7 +37,7 @@ fun ItemOffer(modifier: Modifier = Modifier, offerItem: Offer) {
     Card(
         modifier = Modifier
             .fillMaxWidth(),
-        border = BorderStroke(1.dp, GreenMain),
+        border = BorderStroke(1.dp, Green200),
         shape = RoundedCornerShape(5.dp),
         onClick = {
 
@@ -180,7 +180,7 @@ fun ItemShimmerOffer() {
         modifier = Modifier
             .fillMaxWidth()
             .shimmer(),
-        border = BorderStroke(1.dp, GreenMain),
+        border = BorderStroke(1.dp, Green200),
         shape = RoundedCornerShape(5.dp),
 
         ) {
@@ -263,20 +263,22 @@ fun OfferList(
     modifier: Modifier = Modifier,
     isLoading: Boolean,
     offers: List<Offer>,
-    onLoadMore: () -> Unit
+    onLoadMore: () -> Unit,
+    listState: LazyListState
+
 ) {
 
-    val listState = rememberLazyListState()
 
+    Log.d("BM_Henry", "recompose IsLoading:$isLoading - OfferSize: ${offers.size}: ")
     if (isLoading && offers.isEmpty()) {
+
         Column() {
             LazyColumn(
-                state = listState,
+
                 modifier = modifier,
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             )
             {
-                items(1) { Spacer(modifier = Modifier.height(12.dp)) }
                 items(10) {
                     ItemShimmerOffer()
                 }
@@ -291,7 +293,7 @@ fun OfferList(
             verticalArrangement = Arrangement.spacedBy(8.dp),
         )
         {
-                items(1) { Spacer(modifier = Modifier.height(12.dp)) }
+            //    items(1) { Spacer(modifier = Modifier.height(12.dp)) }
                 items(offers) { offer ->
                     ItemOffer(offerItem = offer)
                 }
@@ -323,7 +325,11 @@ fun InfiniteListHandler(
             val layoutInfo = listState.layoutInfo
             val totalItemsNumber = layoutInfo.totalItemsCount
             val lastVisibleItemIndex = (layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0) + 1
-            lastVisibleItemIndex > (totalItemsNumber - buffer) && lastVisibleItemIndex != 1
+            Log.d("Bm_Henry", "lastVisibleItemIndex: $lastVisibleItemIndex")
+            Log.d("Bm_Henry", "totalItemsNumber: $totalItemsNumber")
+            Log.d("Bm_Henry", "buffer: $buffer")
+            lastVisibleItemIndex > (totalItemsNumber - buffer) && lastVisibleItemIndex!=1
+
         }
     }
 
@@ -332,8 +338,9 @@ fun InfiniteListHandler(
             .distinctUntilChanged()
             .collect {
                 if (loadMore.value) {
-                    Log.d("VietKhanh", "loadMore: ${loadMore.value}")
                     onLoadMore()
+                    Log.d("Bm_Henry", "onLoadMore:")
+
                 }
             }
     }

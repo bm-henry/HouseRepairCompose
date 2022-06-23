@@ -12,7 +12,7 @@ object Dependencies {
     object Libraries{
         object Version {
             const val coreKtxVersion = "1.7.0"
-            const val composeVersion = "1.2.0-beta02"
+            const val composeVersion = "1.1.1"
             const val runtimeKtxVersion= "2.3.1"
             const val activityComposeVersion= "1.3.1"
             const val systemUiVersion = "0.24.9-beta"

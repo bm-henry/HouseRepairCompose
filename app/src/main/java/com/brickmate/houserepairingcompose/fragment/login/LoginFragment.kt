@@ -46,7 +46,6 @@ class LoginFragment : BaseNoToolBarFragment<LoginViewModel>() {
 
     @Composable
     override fun ComposableView() {
-        super.ComposableView()
         LoginBody(onLoginClick = { userName, password ->
             viewModel.login(LoginNormalRequest(userName, password))
         })

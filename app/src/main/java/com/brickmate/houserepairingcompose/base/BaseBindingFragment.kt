@@ -21,12 +21,14 @@ abstract class BaseBindingFragment<T : ViewDataBinding,VM : BaseViewModel> : Bas
 
     // Data Binding
     lateinit var dataBinding: T
+
     override var fragmentTitle: String? = null
+
     override val shouldShowHomeBtn: Boolean = false
+
     override val shouldShowToolBar: Boolean = false
 
-
-
+    override fun composeLayoutID(): Int?  = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,4 +50,6 @@ abstract class BaseBindingFragment<T : ViewDataBinding,VM : BaseViewModel> : Bas
 
 
     abstract fun onViewCreatedDone()
+    @Composable
+    override fun ComposableView(){}
 }

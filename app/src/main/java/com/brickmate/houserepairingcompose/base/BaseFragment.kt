@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -60,7 +57,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
                                 .fillMaxSize()
                                 .padding(horizontal = 12.dp)
                         ) {
-                            ComposableView()
+                            AppBody()
                         }
                     }
 
@@ -73,10 +70,17 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
 
     @Composable
-    open fun ComposableView() {
-        HandleInternetResponse()
+    open fun AppBody() {
+        Box() {
+            Column() {
+                ComposableView()
+            }
+            HandleInternetResponse()
+        }
     }
 
+    @Composable
+    abstract fun ComposableView()
     fun isFragmentLive() = isAdded && view != null
 
     @Composable
