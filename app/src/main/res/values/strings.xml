@@ -32,7 +32,7 @@
     <string name="common_type_request_checked">리포트확인</string>
     <string name="common_type_request_unknown">확인불가</string>
     <string name="common_type_request_user_change_date">시간변경</string>
-    <string name="common_type_request_work_complete_extra" >작업완료</string>
+    <string name="common_type_request_work_complete_extra">작업완료</string>
 
 
     <string name="status_assigning">배정중</string>

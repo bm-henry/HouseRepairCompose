@@ -15,6 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brickmate.houserepairingcompose.BuildConfig
@@ -112,7 +113,7 @@ class LoginFragment : BaseNoToolBarFragment<LoginViewModel>() {
 
     @Composable
     fun LoginForm(
-        modifier: Modifier = Modifier,
+        modifier: Modifier = Modifier.imePadding(),
         onLoginClick: (userName: String, password: String) -> Unit
     ) {
         var userName by rememberSaveable { mutableStateOf("") }

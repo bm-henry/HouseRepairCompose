@@ -3,6 +3,7 @@ package com.brickmate.houserepairingcompose.ui_component
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -140,7 +141,14 @@ fun ErrorDialog(
 }
 
 @Composable
-fun TopToolBar(modifier: Modifier = Modifier, isShowHomeBtn: Boolean = false, title: String?) {
+fun TopToolBar(
+    modifier: Modifier = Modifier,
+    isShowHomeBtn: Boolean = false,
+    title: String?,
+    onHomeClick: () -> Unit,
+    onNoticeClick: () -> Unit,
+
+) {
 
     Box(
         modifier = modifier
@@ -153,8 +161,22 @@ fun TopToolBar(modifier: Modifier = Modifier, isShowHomeBtn: Boolean = false, ti
         Row(modifier = Modifier.fillMaxHeight(), verticalAlignment = Alignment.CenterVertically) {
             if (isShowHomeBtn) {
                 Image(
-                    modifier = Modifier.size(30.dp),
+                    modifier = Modifier
+                        .size(30.dp)
+                        .clickable {
+                            onHomeClick.invoke()
+                        },
                     painter = painterResource(id = R.drawable.ic_toolbar),
+                    contentDescription = ""
+                )
+                Spacer(modifier = Modifier.weight(1f))
+                Image(
+                    modifier = Modifier
+                        .size(30.dp)
+                        .clickable {
+                            onNoticeClick.invoke()
+                        },
+                    painter = painterResource(id = R.drawable.ic_bell),
                     contentDescription = ""
                 )
             }
@@ -209,12 +231,12 @@ fun BorderTextField(
                 if (shouldShowHint) {
                     Text(
                         "접수번호를 검색하세요.",
-
                         style = bold14,
                         color = LightGray
                     )
                 }
                 BasicTextField(
+                    modifier = Modifier.fillMaxWidth(),
                     value = text,
                     onValueChange = {
                         shouldShowHint = it.isEmpty()
@@ -251,7 +273,7 @@ fun PreViewErrorDialog() {
 @Preview
 @Composable
 fun PreTopToolBar() {
-    TopToolBar(title = "집수리 닷컴")
+   // TopToolBar(title = "집수리 닷컴", isShowHomeBtn = true)
 
 }
 

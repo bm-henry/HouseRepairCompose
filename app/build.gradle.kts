@@ -126,6 +126,8 @@ dependencies {
     implementation(Dependencies.Libraries.paging)
     implementation(Dependencies.Libraries.securityCrypto)
     implementation(Dependencies.Libraries.shimmerJetpack)
+    implementation(Dependencies.Libraries.composeFoundation)
+
 
 
     // hilt

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
@@ -22,11 +21,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.brickmate.houserepairingcompose.model.offer.Offer
 import com.brickmate.houserepairingcompose.screen.theme.*
+import com.brickmate.houserepairingcompose.ui_component.ItemInbox
 import com.brickmate.houserepairingcompose.ui_component.extention.setBackgroundWithStatus
 import com.brickmate.houserepairingcompose.util.TimeUtil
 import com.brickmate.houserepairingcompose.util.loadStatusOfferColor
 import com.brickmate.houserepairingcompose.util.loadStatusTextOffer
 import com.brickmate.houserepairingcompose.util.offerDesireDate
+import com.housereapairing.common.model.inbox.Inbox
 import com.valentinilk.shimmer.shimmer
 import kotlinx.coroutines.flow.distinctUntilChanged
 
@@ -259,18 +260,17 @@ fun LazyListState.isScrolledToTheEnd() =
 
 
 @Composable
-fun OfferList(
+fun <T> AppRecyclerView(
     modifier: Modifier = Modifier,
     isLoading: Boolean,
-    offers: List<Offer>,
+    itemData: List<T>,
     onLoadMore: () -> Unit,
+    shimmerView: @Composable () -> Unit ? = {},
     listState: LazyListState
 
 ) {
-
-
-    Log.d("BM_Henry", "recompose IsLoading:$isLoading - OfferSize: ${offers.size}: ")
-    if (isLoading && offers.isEmpty()) {
+    Log.d("BM_Henry", "recompose IsLoading:$isLoading - OfferSize: ${itemData.size}: ")
+    if (isLoading && itemData.isEmpty()) {
 
         Column() {
             LazyColumn(
@@ -280,7 +280,7 @@ fun OfferList(
             )
             {
                 items(10) {
-                    ItemShimmerOffer()
+                    shimmerView()
                 }
                 items(1) { Spacer(modifier = Modifier.height(12.dp)) }
             }
@@ -294,15 +294,23 @@ fun OfferList(
         )
         {
             //    items(1) { Spacer(modifier = Modifier.height(12.dp)) }
-                items(offers) { offer ->
-                    ItemOffer(offerItem = offer)
+            items(itemData) { offer ->
+                if(offer is Offer){
+                    ItemOffer(offerItem = offer as Offer)
+
                 }
-                if(isLoading){
-                    items(1) { offer ->
-                        ItemShimmerOffer()
-                    }
+                if(offer is Inbox){
+                    ItemInbox(itemInbox = offer as Inbox)
+
                 }
-                items(1) { Spacer(modifier = Modifier.height(12.dp)) }
+            }
+
+            if (isLoading) {
+                items(1) { offer ->
+                    shimmerView()
+                }
+            }
+            items(1) { Spacer(modifier = Modifier.height(12.dp)) }
 
 
         }
@@ -328,7 +336,7 @@ fun InfiniteListHandler(
             Log.d("Bm_Henry", "lastVisibleItemIndex: $lastVisibleItemIndex")
             Log.d("Bm_Henry", "totalItemsNumber: $totalItemsNumber")
             Log.d("Bm_Henry", "buffer: $buffer")
-            lastVisibleItemIndex > (totalItemsNumber - buffer) && lastVisibleItemIndex!=1
+            lastVisibleItemIndex > (totalItemsNumber - buffer) && lastVisibleItemIndex != 1
 
         }
     }

@@ -36,6 +36,7 @@ object Dependencies {
             const val pagingVersion = "1.0.0-alpha15"
             const val securityCryptoVersion = "1.0.0"
             const val shimmerJetpack = "1.0.3"
+            const val composeFoundation = "1.2.0-rc02"
 
         }
         const val androidCore = "androidx.core:core-ktx:${Version.coreKtxVersion}"
@@ -78,6 +79,7 @@ object Dependencies {
         const val paging = "androidx.paging:paging-compose:${Version.pagingVersion}"
         const val securityCrypto = "androidx.security:security-crypto:${Version.securityCryptoVersion}"
         const val shimmerJetpack = "com.valentinilk.shimmer:compose-shimmer:${Version.shimmerJetpack}"
+        const val composeFoundation = "androidx.compose.foundation:foundation:${Version.composeFoundation}"
 
 
 

@@ -88,6 +88,13 @@ object AppTextStyle {
         platformStyle = PlatformTextStyle(includeFontPadding = false)
 
     )
+    val bold8 = TextStyle(
+        fontFamily = noSanFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 8.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = false)
+
+    )
     val bold10 = TextStyle(
         fontFamily = noSanFamily,
         fontWeight = FontWeight.Bold,

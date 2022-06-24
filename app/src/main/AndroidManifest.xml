@@ -4,8 +4,10 @@
     package="com.brickmate.houserepairingcompose">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+
         android:name="com.brickmate.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +19,7 @@
         android:theme="@style/Theme.HouseRepairingCompose"
         tools:targetApi="31">
         <activity
+            android:windowSoftInputMode="adjustNothing"
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.HouseRepairingCompose"

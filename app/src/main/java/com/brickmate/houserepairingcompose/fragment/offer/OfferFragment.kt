@@ -6,7 +6,6 @@ import android.view.View
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,14 +14,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.brickmate.houserepairingcompose.R
 import com.brickmate.houserepairingcompose.base.BaseToolBarFragment
 import com.brickmate.houserepairingcompose.ui_component.SearchBar
-import com.brickmate.houserepairingcompose.ui_component.offer.OfferList
+import com.brickmate.houserepairingcompose.ui_component.offer.AppRecyclerView
+import com.brickmate.houserepairingcompose.ui_component.offer.ItemShimmerOffer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -51,8 +50,10 @@ class OfferFragment : BaseToolBarFragment<OfferViewModel>() {
 
     @Composable
     override fun ComposableView() {
+
         OrderBody(modifier = Modifier)
     }
+
 
     @Composable
     private fun OrderBody(modifier: Modifier = Modifier) {
@@ -91,10 +92,11 @@ class OfferFragment : BaseToolBarFragment<OfferViewModel>() {
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
-                OfferList(
+                AppRecyclerView(
                     modifier = Modifier,
+                    shimmerView= { ItemShimmerOffer() },
                     isLoading = shouldShowShimmerEffect.value,
-                    offers = viewModel.offer,
+                    itemData = viewModel.offer,
                     onLoadMore = {
                         viewModel.inCreasePage()
                         Log.d("BM_Henry", "onLoadMore: ")
